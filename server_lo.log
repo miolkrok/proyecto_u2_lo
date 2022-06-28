@@ -1,0 +1,14 @@
+2022-06-27 14:06:01 INFO  ProyectoU2LoApplication:23 - Hola Mundo
+2022-06-27 18:16:22 INFO  ProyectoU2LoApplication:23 - Hola Mundo
+2022-06-27 18:20:10 INFO  ProyectoU2LoApplication:23 - Hola ungo log4j
+2022-06-27 18:20:31 INFO  ProyectoU2LoApplication:23 - Hola Mundo log4j
+2022-06-27 18:22:09 ERROR ProyectoU2LoApplication:23 - error
+2022-06-27 18:27:38 ERROR ProyectoU2LoApplication:23 - error
+2022-06-27 18:29:10 ERROR ProyectoU2LoApplication:23 - error
+2022-06-27 18:33:41 INFO  ProyectoU2LoApplication:23 - HOLA MUNDO LOG4J
+2022-06-27 19:54:11 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
+2022-06-27 20:02:11 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
+2022-06-27 20:06:11 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
+2022-06-27 20:06:39 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
+2022-06-27 20:06:51 INFO  PersonaJdbcRepositoryImpl:44 - Se elimino de la base de datos: 4
+2022-06-27 20:06:51 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
