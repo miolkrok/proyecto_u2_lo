@@ -12,3 +12,18 @@
 2022-06-27 20:06:39 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
 2022-06-27 20:06:51 INFO  PersonaJdbcRepositoryImpl:44 - Se elimino de la base de datos: 4
 2022-06-27 20:06:51 INFO  ProyectoU2LoApplication:45 - La persona es: Persona [id=1, nombre=A, apellido=B]
+2022-06-27 23:31:08 INFO  EstudianteRepositoryImpl:22 - el estudiante buscado es el: 1
+2022-06-27 23:31:55 INFO  EstudianteRepositoryImpl:22 - el estudiante buscado es el: 1
+2022-06-27 23:31:55 INFO  ProyectoU2LoApplication:52 - El estudiante es: Estudiante [id=1, nombre=LUIS, apellido=ORTIZ, edad=25, carrera=ING EN COMPUTACION]
+2022-06-28 16:18:06 INFO  EstudianteRepositoryImpl:30 - Se guardo en la base de datos el estudiante: Estudiante [id=2, nombre=Gabriel, apellido=Montesdeoca, edad=22, carrera=MEDICINA]
+2022-06-28 16:18:06 INFO  EstudianteRepositoryImpl:22 - el estudiante buscado es el: 1
+2022-06-28 16:18:07 INFO  ProyectoU2LoApplication:68 - El estudiante es: Estudiante [id=1, nombre=LUIS, apellido=ORTIZ, edad=25, carrera=ING EN COMPUTACION]
+2022-06-28 16:19:22 INFO  EstudianteRepositoryImpl:30 - Se guardo en la base de datos el estudiante: Estudiante [id=3, nombre=ANDRES, apellido=MANOSALVAS, edad=34, carrera=ARTES]
+2022-06-28 16:19:22 INFO  EstudianteRepositoryImpl:38 - Se guardo en la base de datos el estudiante: Estudiante [id=2, nombre=GABRIEL, apellido=MONTESDEOCA, edad=25, carrera=MEDICINA]
+2022-06-28 16:19:22 INFO  EstudianteRepositoryImpl:22 - el estudiante buscado es el: 1
+2022-06-28 16:19:22 INFO  ProyectoU2LoApplication:70 - El estudiante es: Estudiante [id=1, nombre=LUIS, apellido=ORTIZ, edad=25, carrera=ING EN COMPUTACION]
+2022-06-28 16:20:48 INFO  EstudianteRepositoryImpl:30 - Se guardo en la base de datos el estudiante: Estudiante [id=4, nombre=MICHELLE, apellido=BENALCAZAR, edad=24, carrera=CINE]
+2022-06-28 16:20:48 INFO  EstudianteRepositoryImpl:38 - Se guardo en la base de datos el estudiante: Estudiante [id=2, nombre=GABRIEL, apellido=MONTESDEOCA, edad=25, carrera=MEDICINA]
+2022-06-28 16:20:48 INFO  EstudianteRepositoryImpl:46 - Se elimino de la base de datos: 3
+2022-06-28 16:20:48 INFO  EstudianteRepositoryImpl:22 - el estudiante buscado es el: 1
+2022-06-28 16:20:48 INFO  ProyectoU2LoApplication:70 - El estudiante es: Estudiante [id=1, nombre=LUIS, apellido=ORTIZ, edad=25, carrera=ING EN COMPUTACION]

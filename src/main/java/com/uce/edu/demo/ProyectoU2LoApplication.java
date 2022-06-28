@@ -6,7 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
+import com.uce.edu.demo.to.Estudiante;
 import com.uce.edu.demo.to.Persona;
 
 
@@ -17,6 +19,9 @@ public class ProyectoU2LoApplication implements CommandLineRunner{
 	
 	@Autowired
 	private IPersonaJdbcService personaJdbcService;
+	
+	@Autowired
+	private IEstudianteService estudianteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -40,9 +45,29 @@ public class ProyectoU2LoApplication implements CommandLineRunner{
 		
 //		this.personaJdbcService.actualizar(persona1);
 		
-		this.personaJdbcService.eliminar(4);
-		Persona per = this.personaJdbcService.buscarPorId(1);
-		LOG.info("La persona es: "+ per);
+//		this.personaJdbcService.eliminar(4);
+//		Persona per = this.personaJdbcService.buscarPorId(1);
+//		LOG.info("La persona es: "+ per);
+		
+		Estudiante estu = new Estudiante();
+		estu.setId(4);
+		estu.setNombre("MICHELLE");
+		estu.setApellido("BENALCAZAR");
+		estu.setEdad(24);
+		estu.setCarrera("CINE");
+		this.estudianteService.guardar(estu);
+		Estudiante estu2 = new Estudiante();
+		estu2.setId(2);
+		estu2.setNombre("GABRIEL");
+		estu2.setApellido("MONTESDEOCA");
+		estu2.setEdad(25);
+		estu2.setCarrera("MEDICINA");
+		this.estudianteService.actualizar(estu2);
+		
+		this.estudianteService.eliminar(3);
+		
+		Estudiante  est = this.estudianteService.buscarPorId(1);
+		LOG.info("El estudiante es: "+est);
 	}
 
 }
