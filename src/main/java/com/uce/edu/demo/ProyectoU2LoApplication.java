@@ -6,7 +6,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.Persona;
+import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
@@ -25,6 +27,9 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 
 	@Autowired
 	private IPersonaJpaService personaJpaService;
+
+	@Autowired
+	private IEstudianteJpaService estudianteJpaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -75,22 +80,44 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 
 		///////////////////// JPA////////////////////////////
 
-		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
+//		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
+//
+//		Persona per1 = new Persona();
+//		per1.setId(6);
+//		per1.setNombre("Edison");
+//		per1.setApellido("Cayambe");
+//		// GUARDAR
+//		this.personaJpaService.guardar(per1);
+//		Persona per2 = new Persona();
+//		per2.setId(1);
+//		per2.setNombre("Daniel");
+//		per2.setApellido("Ruiz");
+//		this.personaJpaService.actualizar(per2);
+////		
+//		this.personaJpaService.eliminar(8);
 
-		Persona per1 = new Persona();
-		per1.setId(6);
-		per1.setNombre("Edison");
-		per1.setApellido("Cayambe");
-		//GUARDAR
-		this.personaJpaService.guardar(per1);
-		Persona per2 = new Persona();
-		per2.setId(1);
-		per2.setNombre("Daniel");
-		per2.setApellido("Ruiz");
-		this.personaJpaService.actualizar(per2);
-//		
-		this.personaJpaService.eliminar(8);
+		//////////////////////////ESTUDIANTE JPA///////////////////////
 		
+		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
+		
+		Estudiante estud = new Estudiante();
+		estud.setId(7);
+		estud.setNombre("Karen");
+		estud.setApellido("Zaldumbide");
+		estud.setEdad(23);
+		estud.setCarrera("Medicina");
+		
+		this.estudianteJpaService.guardar(estud);
+		
+		Estudiante estud2 = new Estudiante();
+		estud2.setId(5);
+		estud2.setNombre("Naomi");
+		estud2.setApellido("Marcillo");
+		estud2.setEdad(23);
+		estud2.setCarrera("Administracion");
+		this.estudianteJpaService.actualizar(estud2);
+		
+		this.estudianteJpaService.eliminar(6);
 	}
 
 }

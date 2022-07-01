@@ -1,11 +1,24 @@
-package com.uce.edu.demo.to;
+package com.uce.edu.demo.repository.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "estudiante")
 public class Estudiante {
 	
+	@Id
+	@Column(name = "id")
 	private int id;
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "apellido")
 	private String apellido;
+	@Column(name = "edad")
 	private int edad;
+	@Column(name = "carrera")
 	private String carrera;
 	
 	//set y get
