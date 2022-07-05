@@ -59,16 +59,16 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		Estudiante  est = this.estudianteService.buscarPorId(1);
 //		LOG.info("El estudiante es: "+est);
 
-		PersonaTo persona = new PersonaTo();
-		persona.setId(4);
-		persona.setNombre("Borrar");
-		persona.setApellido("Cayambe");
-
-//		this.personaJdbcService.guardar(persona);
-		PersonaTo persona1 = new PersonaTo();
-		persona1.setId(1);
-		persona1.setNombre("A");
-		persona1.setApellido("B");
+//		PersonaTo persona = new PersonaTo();
+//		persona.setId(4);
+//		persona.setNombre("Borrar");
+//		persona.setApellido("Cayambe");
+//
+////		this.personaJdbcService.guardar(persona);
+//		PersonaTo persona1 = new PersonaTo();
+//		persona1.setId(1);
+//		persona1.setNombre("A");
+//		persona1.setApellido("B");
 
 //		this.personaJdbcService.actualizar(persona1);
 
@@ -81,43 +81,47 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		///////////////////// JPA////////////////////////////
 
 //		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
-//
-//		Persona per1 = new Persona();
-//		per1.setId(6);
-//		per1.setNombre("Edison");
-//		per1.setApellido("Cayambe");
-//		// GUARDAR
-//		this.personaJpaService.guardar(per1);
+		
+		// GUARDAR
+		Persona per1 = new Persona();
+//		per1.setId(7);
+		per1.setNombre("Pepito");
+		per1.setApellido("Perez");
+
+		this.personaJpaService.guardar(per1);
+		
+		//ACTUALIZACION
 //		Persona per2 = new Persona();
 //		per2.setId(1);
-//		per2.setNombre("Daniel");
-//		per2.setApellido("Ruiz");
+//		per2.setNombre("DanielA");
+//		per2.setApellido("RuizA");
 //		this.personaJpaService.actualizar(per2);
-////		
-//		this.personaJpaService.eliminar(8);
+//		
+//		//ELIMINACION
+//		this.personaJpaService.eliminar(6);
 
 		//////////////////////////ESTUDIANTE JPA///////////////////////
 		
-		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
-		
-		Estudiante estud = new Estudiante();
-		estud.setId(7);
-		estud.setNombre("Karen");
-		estud.setApellido("Zaldumbide");
-		estud.setEdad(23);
-		estud.setCarrera("Medicina");
-		
-		this.estudianteJpaService.guardar(estud);
-		
-		Estudiante estud2 = new Estudiante();
-		estud2.setId(5);
-		estud2.setNombre("Naomi");
-		estud2.setApellido("Marcillo");
-		estud2.setEdad(23);
-		estud2.setCarrera("Administracion");
-		this.estudianteJpaService.actualizar(estud2);
-		
-		this.estudianteJpaService.eliminar(6);
+//		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
+//		
+//		Estudiante estud = new Estudiante();
+//		estud.setId(7);
+//		estud.setNombre("Karen");
+//		estud.setApellido("Zaldumbide");
+//		estud.setEdad(23);
+//		estud.setCarrera("Medicina");
+//		
+//		this.estudianteJpaService.guardar(estud);
+//		
+//		Estudiante estud2 = new Estudiante();
+//		estud2.setId(5);
+//		estud2.setNombre("Naomi");
+//		estud2.setApellido("Marcillo");
+//		estud2.setEdad(23);
+//		estud2.setCarrera("Administracion");
+//		this.estudianteJpaService.actualizar(estud2);
+//		
+//		this.estudianteJpaService.eliminar(6);
 	}
 
 }
