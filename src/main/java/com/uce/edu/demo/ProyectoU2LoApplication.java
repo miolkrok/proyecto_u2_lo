@@ -1,5 +1,7 @@
 package com.uce.edu.demo;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -81,16 +83,17 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		///////////////////// JPA////////////////////////////
 
 //		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
-		
+
 		// GUARDAR
 		Persona per1 = new Persona();
 //		per1.setId(7);
-		per1.setNombre("Pepito");
+		per1.setNombre("Juanito");
 		per1.setApellido("Perez");
+		per1.setGenero("M");
+		per1.setCedula("1658455820");
+//		this.personaJpaService.guardar(per1);
 
-		this.personaJpaService.guardar(per1);
-		
-		//ACTUALIZACION
+		// ACTUALIZACION
 //		Persona per2 = new Persona();
 //		per2.setId(1);
 //		per2.setNombre("DanielA");
@@ -100,8 +103,14 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		//ELIMINACION
 //		this.personaJpaService.eliminar(6);
 
-		//////////////////////////ESTUDIANTE JPA///////////////////////
-		
+		// BUSCAR POR CEDULA
+		LOG.info("Person encontrada: " + this.personaJpaService.buscarPorCedula("1788451206"));
+		List<Persona> persoApellido = this.personaJpaService.buscarPorApellido("Perez");
+		for(Persona p : persoApellido) {
+		LOG.info("La persona es: " + p);
+	}
+		////////////////////////// ESTUDIANTE JPA///////////////////////
+
 //		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
 //		
 //		Estudiante estud = new Estudiante();

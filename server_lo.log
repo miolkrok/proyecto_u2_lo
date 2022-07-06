@@ -40,3 +40,11 @@
 2022-07-01 15:03:11 INFO  ProyectoU2LoApplication:101 - DATO CON JPA ESTUDIANTE: null
 2022-07-01 15:04:54 INFO  ProyectoU2LoApplication:101 - DATO CON JPA ESTUDIANTE: null
 2022-07-04 18:25:07 INFO  ProyectoU2LoApplication:83 - Dato con JPA: Persona [id=3, nombre=Luis, apellido=Ortiz]
+2022-07-05 19:47:37 INFO  ProyectoU2LoApplication:94 - Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 19:49:17 INFO  ProyectoU2LoApplication:94 - Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 19:50:10 INFO  ProyectoU2LoApplication:105 - Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 19:50:43 INFO  ProyectoU2LoApplication:105 - Person encontrada: Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 20:02:24 INFO  ProyectoU2LoApplication:107 - Person encontrada: Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 20:02:24 INFO  ProyectoU2LoApplication:110 - La persona es: Persona [id=1, nombre=Pepito, apellido=Perez, genero=M, cedula=null]
+2022-07-05 20:02:24 INFO  ProyectoU2LoApplication:110 - La persona es: Persona [id=2, nombre=Pepito, apellido=Perez, genero=M, cedula=1788451206]
+2022-07-05 20:02:24 INFO  ProyectoU2LoApplication:110 - La persona es: Persona [id=3, nombre=Juanito, apellido=Perez, genero=M, cedula=1658455820]
