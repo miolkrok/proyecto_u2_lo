@@ -8,13 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
-import com.uce.edu.demo.to.PersonaTo;
 
 @SpringBootApplication
 public class ProyectoU2LoApplication implements CommandLineRunner {
@@ -109,6 +107,16 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		for(Persona p : persoApellido) {
 		LOG.info("La persona es: " + p);
 	}
+		// BUSCAR POR GENERO
+		List<Persona> persoGenero = this.personaJpaService.buscarPorGenero("M");
+		for(Persona pg : persoGenero) {
+		LOG.info("La persona es: " + pg);
+		}
+		// BUSCAR POR NOMBRE
+		List<Persona> persoNombre = this.personaJpaService.buscarPorNombre("Pepito");
+		for(Persona pb : persoNombre) {
+		LOG.info("La persona es: " + pb);
+		}
 		////////////////////////// ESTUDIANTE JPA///////////////////////
 
 //		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
