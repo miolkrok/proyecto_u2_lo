@@ -77,46 +77,7 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("La persona es: "+ per);
 
 //		LOG.info("Lista: " + this.personaJdbcService.buscarTodos());
-
-		///////////////////// JPA////////////////////////////
-
-//		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
-
-		// GUARDAR
-		Persona per1 = new Persona();
-//		per1.setId(7);
-		per1.setNombre("Juanito");
-		per1.setApellido("Perez");
-		per1.setGenero("M");
-		per1.setCedula("1658455820");
-//		this.personaJpaService.guardar(per1);
-
-		// ACTUALIZACION
-//		Persona per2 = new Persona();
-//		per2.setId(1);
-//		per2.setNombre("DanielA");
-//		per2.setApellido("RuizA");
-//		this.personaJpaService.actualizar(per2);
-//		
-//		//ELIMINACION
-//		this.personaJpaService.eliminar(6);
-
-		// BUSCAR POR CEDULA
-		LOG.info("Person encontrada: " + this.personaJpaService.buscarPorCedula("1788451206"));
-		List<Persona> persoApellido = this.personaJpaService.buscarPorApellido("Perez");
-		for(Persona p : persoApellido) {
-		LOG.info("La persona es: " + p);
-	}
-		// BUSCAR POR GENERO
-		List<Persona> persoGenero = this.personaJpaService.buscarPorGenero("M");
-		for(Persona pg : persoGenero) {
-		LOG.info("La persona es: " + pg);
-		}
-		// BUSCAR POR NOMBRE
-		List<Persona> persoNombre = this.personaJpaService.buscarPorNombre("Pepito");
-		for(Persona pb : persoNombre) {
-		LOG.info("La persona es: " + pb);
-		}
+		
 		////////////////////////// ESTUDIANTE JPA///////////////////////
 
 //		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
@@ -139,6 +100,61 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		this.estudianteJpaService.actualizar(estud2);
 //		
 //		this.estudianteJpaService.eliminar(6);
+
+		///////////////////// JPA////////////////////////////
+
+//		LOG.info("Dato con JPA: " + this.personaJpaService.buscarPorId(3));
+
+		// GUARDAR
+		Persona per1 = new Persona();
+//		per1.setId(7);
+		per1.setNombre("Maximo");
+		per1.setApellido("Octavo");
+		per1.setGenero("M");
+		per1.setCedula("1795126527");
+//		this.personaJpaService.guardar(per1);
+		
+		Persona per2 = new Persona();
+//		per1.setId(7);
+		per2.setNombre("Camila");
+		per2.setApellido("Martinez");
+		per2.setGenero("F");
+		per2.setCedula("1765162562");
+//		this.personaJpaService.guardar(per2);
+
+		// ACTUALIZACION
+//		Persona per2 = new Persona();
+//		per2.setId(1);
+//		per2.setNombre("DanielA");
+//		per2.setApellido("RuizA");
+//		this.personaJpaService.actualizar(per2);
+//		
+//		//ELIMINACION
+//		this.personaJpaService.eliminar(6);
+
+		// BUSCAR POR CEDULA
+//		LOG.info("Person encontrada: " + this.personaJpaService.buscarPorCedula("1788451206"));
+//		List<Persona> persoApellido = this.personaJpaService.buscarPorApellido("Perez");
+//		for(Persona p : persoApellido) {
+//		LOG.info("La persona es: " + p);
+//	}
+//		// BUSCAR POR GENERO
+//		List<Persona> persoGenero = this.personaJpaService.buscarPorGenero("M");
+//		for(Persona pg : persoGenero) {
+//		LOG.info("La persona es: " + pg);
+//		}
+//		// BUSCAR POR NOMBRE
+//		List<Persona> persoNombre = this.personaJpaService.buscarPorNombre("Pepito");
+//		for(Persona pb : persoNombre) {
+//		LOG.info("La persona es: " + pb);
+//		}
+
+		int resultado = this.personaJpaService.actualizarPorApellido("FE", "Octavo");
+		LOG.info("Cantidad de registros actualizados: " +resultado);
+		
+		int resultado2 = this.personaJpaService.eliminarPorGenero("F");
+		LOG.info("Cantidad de registros actualizados: " +resultado2);
+		
 	}
 
 }
