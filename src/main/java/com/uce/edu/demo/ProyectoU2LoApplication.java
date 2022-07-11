@@ -1,6 +1,7 @@
 package com.uce.edu.demo;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.demo.repository.modelo.Persona;
+import com.uce.edu.demo.repository.modelo.prueba.MatriculaVehiculos;
+import com.uce.edu.demo.repository.modelo.prueba.Propietario;
+import com.uce.edu.demo.repository.modelo.prueba.Vehiculo;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
+import com.uce.edu.demo.service.prueba.IGestorMatriculacionService;
+import com.uce.edu.demo.service.prueba.IPropietarioService;
+import com.uce.edu.demo.service.prueba.IVehiculoService;
 
 @SpringBootApplication
 public class ProyectoU2LoApplication implements CommandLineRunner {
@@ -30,6 +37,15 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 
 	@Autowired
 	private IEstudianteJpaService estudianteJpaService;
+	
+	@Autowired
+	private IVehiculoService vehiculoService;
+	@Autowired
+	private IPropietarioService propietarioService;
+	
+	@Autowired
+	private IGestorMatriculacionService gestMatrServ;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -149,11 +165,31 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("La persona es: " + pb);
 //		}
 
-		int resultado = this.personaJpaService.actualizarPorApellido("FE", "Octavo");
-		LOG.info("Cantidad de registros actualizados: " +resultado);
+//		int resultado = this.personaJpaService.actualizarPorApellido("FE", "Octavo");
+//		LOG.info("Cantidad de registros actualizados: " +resultado);
+//		
+//		int resultado2 = this.personaJpaService.eliminarPorGenero("F");
+//		LOG.info("Cantidad de registros actualizados: " +resultado2);
 		
-		int resultado2 = this.personaJpaService.eliminarPorGenero("F");
-		LOG.info("Cantidad de registros actualizados: " +resultado2);
+		Vehiculo vehi = new Vehiculo();
+		vehi.setMarca("ford");
+		vehi.setPlaca("pdo3562");
+		vehi.setPrecio(new BigDecimal(20000));
+		vehi.setTipo("liviano");
+		this.vehiculoService.crear(vehi);
+		vehi.setMarca("FORD");
+		vehi.setPlaca("PDO-3562");
+		this.vehiculoService.actualizar(vehi);
+		Propietario prop = new Propietario();
+		prop.setNombre("LUIS");
+		prop.setApellido("ORTIZ");
+		prop.setCedula("1718496944");
+		prop.setFechaNacimiento(LocalDateTime.of(1997, 5, 19, 0, 20));
+		this.propietarioService.crear(prop);
+		MatriculaVehiculos matr = new MatriculaVehiculos();
+		matr.setPropietario(prop);
+		matr.setVehiculo(vehi);
+		this.gestMatrServ.matricular("PDO-3562", "1718496944");
 		
 	}
 
