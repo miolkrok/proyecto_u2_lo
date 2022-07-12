@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,31 @@ public class PersonaJpaRepositoryImpl implements IPersonaJpaRepository{
 		
 		return (Persona) jpqlQuery.getSingleResult();
 	}
+	
+	@Override
+	public Persona buscarPorCedulaTyped(String cedula) {
+		// TODO Auto-generated method stub
+		TypedQuery<Persona> myTypedQuery = this.entityManager.createQuery("SELECT p FROM Persona p WHERE p.cedula = :datoCedula ", Persona.class);
+		myTypedQuery.setParameter("datoCedula", cedula);
+		return myTypedQuery.getSingleResult();
+	}
 
+	@Override
+	public Persona buscarPorCedulaNamed(String cedula) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula");
+		myQuery.setParameter("datoCedula", cedula);
+		return (Persona) myQuery.getSingleResult();
+	}
+	
+	@Override
+	public Persona buscarPorCedulaTypedNamed(String cedula) {
+		// TODO Auto-generated method stub
+		TypedQuery<Persona> myTypedQuery = this.entityManager.createNamedQuery("Persona.buscarPorCedula", Persona.class);
+		myTypedQuery.setParameter("datoCedula", cedula);
+		return myTypedQuery.getSingleResult();
+	}
+	
 	@Override
 	public List<Persona> buscarPorApellido(String apellido) {
 		// TODO Auto-generated method stub
@@ -60,6 +85,15 @@ public class PersonaJpaRepositoryImpl implements IPersonaJpaRepository{
 		jpqlQuery.setParameter("datoApellido", apellido);
 		
 		return jpqlQuery.getResultList();
+	}
+
+	@Override
+	public List<Persona> buscarPorNombreApellidoTypedNamed(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		TypedQuery<Persona> myTypedQuery = this.entityManager.createNamedQuery("Persona.buscarPorNombreApellido", Persona.class);
+		myTypedQuery.setParameter("datoNombre", nombre);
+		myTypedQuery.setParameter("datoApellido", apellido);
+		return myTypedQuery.getResultList();
 	}
 
 	@Override
@@ -97,5 +131,10 @@ public class PersonaJpaRepositoryImpl implements IPersonaJpaRepository{
 		
 		return myQuery.executeUpdate();
 	}
+
+
+
+
+
 
 }

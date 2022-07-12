@@ -11,18 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "matricula_vehiculos")
+//@Entity
+//@Table(name = "matricula_vehiculos")
 public class MatriculaVehiculos {
 	
-	@Id
-	@Column(name = "mave_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "name_generator")
-	@SequenceGenerator(name = "name_generator",sequenceName = "mave_id_seq", allocationSize = 1)
+//	@Id
+//	@Column(name = "mave_id")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "name_generator")
+//	@SequenceGenerator(name = "name_generator",sequenceName = "mave_id_seq", allocationSize = 1)
 	private Integer id;
-	@Column(name = "mave_fecha_matricula", columnDefinition = "TIMESTAMP")
+//	@Column(name = "mave_fecha_matricula", columnDefinition = "TIMESTAMP")
 	private LocalDateTime fechaMatricula;
-	@Column(name = "mave_valor_matricula")
+//	@Column(name = "mave_valor_matricula")
 	private BigDecimal valorMatricula;
 	private Propietario propietario;
 	private Vehiculo vehiculo;
