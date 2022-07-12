@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
@@ -93,21 +94,22 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 
 //		LOG.info("DATO CON JPA ESTUDIANTE: " +this.personaJpaService.buscarPorId(4));
 //		
-//		Estudiante estud = new Estudiante();
+		Estudiante estud = new Estudiante();
 //		estud.setId(7);
-//		estud.setNombre("Karen");
-//		estud.setApellido("Zaldumbide");
-//		estud.setEdad(23);
-//		estud.setCarrera("Medicina");
-//		
+		estud.setNombre("Ariel");
+		estud.setApellido("Salgado");
+		estud.setEdad(23);
+		estud.setCarrera("Artes");
+		
 //		this.estudianteJpaService.guardar(estud);
-//		
-//		Estudiante estud2 = new Estudiante();
+		
+		Estudiante estud2 = new Estudiante();
 //		estud2.setId(5);
-//		estud2.setNombre("Naomi");
-//		estud2.setApellido("Marcillo");
-//		estud2.setEdad(23);
-//		estud2.setCarrera("Administracion");
+		estud2.setNombre("Leonel");
+		estud2.setApellido("Ramos");
+		estud2.setEdad(23);
+		estud2.setCarrera("Medicina");
+//		this.estudianteJpaService.guardar(estud2);
 //		this.estudianteJpaService.actualizar(estud2);
 //		
 //		this.estudianteJpaService.eliminar(6);
@@ -187,21 +189,30 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		int resultado2 = this.personaJpaService.eliminarPorGenero("FE");
 //		LOG.info("Cantidad de registros actualizados: " +resultado2);
 
-		//1. TypedQuery
-		Persona persTyped = this.personaJpaService.buscarPorCedulaTyped("1765162562");
-		LOG.info("Person Typed encontrada: " + persTyped);
-		//2. NamedQuery
-		LOG.info("Person Named encontrada: " + this.personaJpaService.buscarPorCedulaNamed("1704115102"));
-		//3.TypedQuery y  NamedQuery
-		LOG.info("Person Typed Named encontrada: " + this.personaJpaService.buscarPorCedulaTypedNamed("1798541541"));
-
-		//4 VARIOS NamedQuery
-		
-		List<Persona> listaPersona = this.personaJpaService.buscarPorNombreApellidoTypedNamed("Aiken", "Salamanca");
-		for(Persona item : listaPersona) {
-		LOG.info("La persona es: " + item);
+//		//1. TypedQuery
+//		Persona persTyped = this.personaJpaService.buscarPorCedulaTyped("1765162562");
+//		LOG.info("Person Typed encontrada: " + persTyped);
+//		//2. NamedQuery
+//		LOG.info("Person Named encontrada: " + this.personaJpaService.buscarPorCedulaNamed("1704115102"));
+//		//3.TypedQuery y  NamedQuery
+//		LOG.info("Person Typed Named encontrada: " + this.personaJpaService.buscarPorCedulaTypedNamed("1798541541"));
+//
+//		//4 VARIOS NamedQuery
+//		
+//		List<Persona> listaPersona = this.personaJpaService.buscarPorNombreApellidoTypedNamed("Aiken", "Salamanca");
+//		for(Persona item : listaPersona) {
+//		LOG.info("La persona es: " + item);
+//		}
+		/////////////////////////tarea 17//////////////////
+		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
+		LOG.info("Typed: "+this.estudianteJpaService.buscarPorEdadApellidoTyped(24, "Marquez"));
+		LOG.info("Named: "+this.estudianteJpaService.buscarPorNombreApellidoNamed("Naomi", "Marcillo"));
+		LOG.info("Named: "+this.estudianteJpaService.buscarPorEdadCarreraNamed(24, "Medicina"));
+		LOG.info("TypedNamed: "+this.estudianteJpaService.buscarPorNombreApellidoTypedNamed("Naomi", "Marcillo"));
+		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscarPorEdadCarreraTypedNamed(23, "Medicina");
+		for(Estudiante item : listaEstudiante) {
+			LOG.info("Estudiante: " +item);
 		}
-		
 	}
 
 }

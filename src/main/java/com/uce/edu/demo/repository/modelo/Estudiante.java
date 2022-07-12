@@ -2,23 +2,31 @@ package com.uce.edu.demo.repository.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "estudiante")
+@NamedQuery(name = "Estudiante.buscarPorNombreApellido",query = "SELECT e FROM Estudiante e WHERE e.nombre = :datoNombre AND e.apellido = :datoApellido")
+@NamedQuery(name = "Estudiante.buscarPorEdadCarrera",query = "SELECT e FROM Estudiante e WHERE e.edad = :datoEdad AND e.carrera = :datoCarrera ") 
 public class Estudiante {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "estu_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "name_generator")
+	@SequenceGenerator(name = "name_generator",sequenceName = "estu_id_seq", allocationSize = 1)
 	private int id;
-	@Column(name = "nombre")
+	@Column(name = "estu_nombre")
 	private String nombre;
-	@Column(name = "apellido")
+	@Column(name = "estu_apellido")
 	private String apellido;
-	@Column(name = "edad")
+	@Column(name = "estu_edad")
 	private int edad;
-	@Column(name = "carrera")
+	@Column(name = "estu_carrera")
 	private String carrera;
 	
 	//set y get
