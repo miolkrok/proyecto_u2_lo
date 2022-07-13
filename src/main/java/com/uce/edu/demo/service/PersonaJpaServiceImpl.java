@@ -61,6 +61,24 @@ public class PersonaJpaServiceImpl implements IPersonaJpaService{
 		// TODO Auto-generated method stub
 		return this.personaJpaRepository.buscarPorCedulaTypedNamed(cedula);
 	}
+	
+	@Override
+	public Persona buscarPorCedulaNative(String cedula) {
+		// TODO Auto-generated method stub
+		return this.personaJpaRepository.buscarPorCedulaNative(cedula);
+	}
+	
+	@Override
+	public Persona buscarPorCedulaNativeNamed(String cedula) {
+		// TODO Auto-generated method stub
+		return this.personaJpaRepository.buscarPorCedulaNativeNamed(cedula);
+	}
+	
+	@Override
+	public Persona buscarPorCedulaCriteriaAPI(String cedula) {
+		// TODO Auto-generated method stub
+		return this.personaJpaRepository.buscarPorCedulaCriteriaAPI(cedula);
+	}
 
 	@Override
 	public List<Persona> buscarPorApellido(String apellido) {
@@ -97,11 +115,6 @@ public class PersonaJpaServiceImpl implements IPersonaJpaService{
 		// TODO Auto-generated method stub
 		return this.personaJpaRepository.eliminarPorGenero(genero);
 	}
-
-
-
-
-
 
 
 }

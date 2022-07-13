@@ -203,16 +203,21 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		for(Persona item : listaPersona) {
 //		LOG.info("La persona es: " + item);
 //		}
-		/////////////////////////tarea 17//////////////////
-		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
-		LOG.info("Typed: "+this.estudianteJpaService.buscarPorEdadApellidoTyped(24, "Marquez"));
-		LOG.info("Named: "+this.estudianteJpaService.buscarPorNombreApellidoNamed("Naomi", "Marcillo"));
-		LOG.info("Named: "+this.estudianteJpaService.buscarPorEdadCarreraNamed(24, "Medicina"));
-		LOG.info("TypedNamed: "+this.estudianteJpaService.buscarPorNombreApellidoTypedNamed("Naomi", "Marcillo"));
-		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscarPorEdadCarreraTypedNamed(23, "Medicina");
-		for(Estudiante item : listaEstudiante) {
-			LOG.info("Estudiante: " +item);
-		}
+		
+		//5 NativeQuery
+		LOG.info("Person Native encontrada: " +this.personaJpaService.buscarPorCedulaNative("1704115102"));
+		LOG.info("Person NativeNamed encontrada: " +this.personaJpaService.buscarPorCedulaNativeNamed("1704115102"));
+		LOG.info("Person Criteria API encontrada: " +this.personaJpaService.buscarPorCedulaCriteriaAPI("1704115102"));
+//		/////////////////////////tarea 17//////////////////
+//		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
+//		LOG.info("Typed: "+this.estudianteJpaService.buscarPorEdadApellidoTyped(24, "Marquez"));
+//		LOG.info("Named: "+this.estudianteJpaService.buscarPorNombreApellidoNamed("Naomi", "Marcillo"));
+//		LOG.info("Named: "+this.estudianteJpaService.buscarPorEdadCarreraNamed(24, "Medicina"));
+//		LOG.info("TypedNamed: "+this.estudianteJpaService.buscarPorNombreApellidoTypedNamed("Naomi", "Marcillo"));
+//		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscarPorEdadCarreraTypedNamed(23, "Medicina");
+//		for(Estudiante item : listaEstudiante) {
+//			LOG.info("Estudiante: " +item);
+//		}
 	}
 
 }
