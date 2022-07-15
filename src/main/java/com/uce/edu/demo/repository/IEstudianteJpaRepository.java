@@ -16,4 +16,8 @@ public interface IEstudianteJpaRepository {
 	public Estudiante buscarPorEdadCarreraNamed(Integer edad,String carrera);
 	public Estudiante buscarPorNombreApellidoTypedNamed(String nombre,String apellido);
 	public List<Estudiante> buscarPorEdadCarreraTypedNamed(Integer edad,String carrera);
+	public Estudiante buscarPorNombreApellidoNative(String nombre,String apellido);
+	public Estudiante buscarPorEdadCarreraNative(Integer edad,String carrera);
+	public Estudiante buscarPorNombreApellidoNamedNative(String nombre,String apellido);
+	public Estudiante buscarPorEdadCarreraNamedNative(Integer edad,String carrera);
 }

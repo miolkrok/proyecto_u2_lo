@@ -204,10 +204,10 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("La persona es: " + item);
 //		}
 		
-		//5 NativeQuery
-		LOG.info("Person Native encontrada: " +this.personaJpaService.buscarPorCedulaNative("1704115102"));
-		LOG.info("Person NativeNamed encontrada: " +this.personaJpaService.buscarPorCedulaNativeNamed("1704115102"));
-		LOG.info("Person Criteria API encontrada: " +this.personaJpaService.buscarPorCedulaCriteriaAPI("1704115102"));
+//		//5 NativeQuery
+//		LOG.info("Person Native encontrada: " +this.personaJpaService.buscarPorCedulaNative("1704115102"));
+//		LOG.info("Person NativeNamed encontrada: " +this.personaJpaService.buscarPorCedulaNativeNamed("1704115102"));
+//		LOG.info("Person Criteria API encontrada: " +this.personaJpaService.buscarPorCedulaCriteriaAPI("1704115102"));
 //		/////////////////////////tarea 17//////////////////
 //		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
 //		LOG.info("Typed: "+this.estudianteJpaService.buscarPorEdadApellidoTyped(24, "Marquez"));
@@ -218,6 +218,12 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		for(Estudiante item : listaEstudiante) {
 //			LOG.info("Estudiante: " +item);
 //		}
+		LOG.info("Estudiante Native encontrada: "+this.estudianteJpaService.buscarPorNombreApellidoNative("Naomi", "Marcillo"));
+		LOG.info("Estudiante Native encontrada: "+this.estudianteJpaService.buscarPorEdadCarreraNative(24,"Medicina"));
+		LOG.info("Estudiante NativeNamed encontrada: "+this.estudianteJpaService.buscarPorNombreApellidoNamedNative("Naomi", "Marcillo"));
+		LOG.info("Estudiante NativeNamed encontrada: "+this.estudianteJpaService.buscarPorEdadCarreraNamedNative(24,"Medicina"));
+		
+	
 	}
 
 }

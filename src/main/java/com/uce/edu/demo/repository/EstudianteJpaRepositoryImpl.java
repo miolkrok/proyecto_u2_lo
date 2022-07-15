@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.repository.modelo.Estudiante;
+import com.uce.edu.demo.repository.modelo.Persona;
 
 @Repository
 @Transactional
@@ -54,7 +55,7 @@ public class EstudianteJpaRepositoryImpl implements IEstudianteJpaRepository {
 		myTypedQuery.setParameter("datoApellido", apellido);
 		return myTypedQuery.getSingleResult();
 	}
-	
+
 	@Override
 	public Estudiante buscarPorEdadApellidoTyped(Integer edad, String apellido) {
 		// TODO Auto-generated method stub
@@ -74,7 +75,7 @@ public class EstudianteJpaRepositoryImpl implements IEstudianteJpaRepository {
 		myQuery.setParameter("datoApellido", apellido);
 		return (Estudiante) myQuery.getSingleResult();
 	}
-	
+
 	@Override
 	public Estudiante buscarPorEdadCarreraNamed(Integer edad, String carrera) {
 		// TODO Auto-generated method stub
@@ -102,6 +103,49 @@ public class EstudianteJpaRepositoryImpl implements IEstudianteJpaRepository {
 		myTypedQuery.setParameter("datoEdad", edad);
 		myTypedQuery.setParameter("datoCarrera", carrera);
 		return myTypedQuery.getResultList();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreApellidoNative(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNativeQuery(
+				"SELECT * FROM estudiante WHERE estu_nombre = :datoNombre AND estu_apellido = :datoApellido",
+				Estudiante.class);
+		myQuery.setParameter("datoNombre", nombre);
+		myQuery.setParameter("datoApellido", apellido);
+		return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorEdadCarreraNative(Integer edad, String carrera) {
+		// TODO Auto-generated method stub
+		Query myQuery = this.entityManager.createNativeQuery(
+				"SELECT * FROM estudiante WHERE estu_edad = :datoEdad AND estu_carrera = :datoCarrera",
+				Estudiante.class);
+		myQuery.setParameter("datoEdad", edad);
+		myQuery.setParameter("datoCarrera", carrera);
+		return (Estudiante) myQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorNombreApellidoNamedNative(String nombre, String apellido) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myTypedQuery = this.entityManager
+				.createNamedQuery("Estudiante.buscarPorNombreApellidoNamedNative", Estudiante.class);
+		myTypedQuery.setParameter("datoNombre", nombre);
+		myTypedQuery.setParameter("datoApellido", apellido);
+		return myTypedQuery.getSingleResult();
+	}
+
+	@Override
+	public Estudiante buscarPorEdadCarreraNamedNative(Integer edad, String carrera) {
+		// TODO Auto-generated method stub
+		TypedQuery<Estudiante> myTypedQuery = this.entityManager
+				.createNamedQuery("Estudiante.buscarPorEdadCarreraNamedNative", Estudiante.class);
+		myTypedQuery.setParameter("datoEdad", edad);
+		myTypedQuery.setParameter("datoCarrera", carrera);
+		;
+		return myTypedQuery.getSingleResult();
 	}
 
 }
