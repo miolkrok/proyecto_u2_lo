@@ -81,6 +81,18 @@ public class PersonaJpaServiceImpl implements IPersonaJpaService{
 	}
 
 	@Override
+	public List<Persona> buscarDinamicamente(String nombre, String apellido, String genero) {
+		// TODO Auto-generated method stub
+		return this.personaJpaRepository.buscarDinamicamente(nombre, apellido, genero);
+	}
+	
+	@Override
+	public List<Persona> buscarDinamicamentePredicados(String nombre, String apellido, String genero) {
+		// TODO Auto-generated method stub
+		return this.personaJpaRepository.buscarDinamicamentePredicados(nombre, apellido, genero);
+	}
+	
+	@Override
 	public List<Persona> buscarPorApellido(String apellido) {
 		// TODO Auto-generated method stub
 		return this.personaJpaRepository.buscarPorApellido(apellido);
@@ -115,6 +127,4 @@ public class PersonaJpaServiceImpl implements IPersonaJpaService{
 		// TODO Auto-generated method stub
 		return this.personaJpaRepository.eliminarPorGenero(genero);
 	}
-
-
 }
