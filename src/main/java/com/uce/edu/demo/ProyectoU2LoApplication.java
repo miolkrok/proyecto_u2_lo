@@ -210,15 +210,14 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		//6 CRITERIA API
 //		LOG.info("Persona Criteria API encontrada: " + this.personaJpaService.buscarPorCedulaCriteriaAPI("1704115102"));
 		//7 CRITERIA API DINAMICOS
-		List<Persona> listaPersona = this.personaJpaService.buscarDinamicamente("Camila", "Carrion", "F");
-		for(Persona item : listaPersona) {
-		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
-		}
-		
-		List<Persona> listaPersona2 = this.personaJpaService.buscarDinamicamentePredicados("Camila", "martinez", "F");
-		for(Persona item : listaPersona2) {
-		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
-		}
+//		List<Persona> listaPersona = this.personaJpaService.buscarDinamicamente("Camila", "Carrion", "F");
+//		for(Persona item : listaPersona) {
+//		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
+//		}
+//		List<Persona> listaPersona2 = this.personaJpaService.buscarDinamicamentePredicados("Camila", "martinez", "F");
+//		for(Persona item : listaPersona2) {
+//		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
+//		}
 		
 //		/////////////////////////tarea 17//////////////////
 //		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
@@ -235,7 +234,16 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("Estudiante NativeNamed encontrada: "+this.estudianteJpaService.buscarPorNombreApellidoNamedNative("Naomi", "Marcillo"));
 //		LOG.info("Estudiante NativeNamed encontrada: "+this.estudianteJpaService.buscarPorEdadCarreraNamedNative(24,"Medicina"));
 		
-	
+//		/////////////////////////tarea 19//////////////////
+		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscaDinamicamentePorNombreApellido("Ariel", "Zaldumbide", 23);
+		for(Estudiante item : listaEstudiante) {
+		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
+		}
+		List<Estudiante> listaEstudianteDos = this.estudianteJpaService.buscaDinamicamentePorNombreCarrera("Dario", "Medicina", 24);
+		for(Estudiante item : listaEstudianteDos) {
+		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
+		}
+		
 	}
 
 }
