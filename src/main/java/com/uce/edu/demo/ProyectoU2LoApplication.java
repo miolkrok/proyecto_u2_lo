@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.Persona;
+import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
+import com.uce.edu.demo.repository.modelo.PersonaSencilla;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
@@ -218,6 +220,17 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		for(Persona item : listaPersona2) {
 //		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
 //		}
+		//////////////PERSONA SENCILLA///////////////////////
+		List<PersonaSencilla> listaPersonaSencilla = this.personaJpaService.buscarPorApellidoSencillo("Salamanca");
+		for(PersonaSencilla item : listaPersonaSencilla) {
+		LOG.info("La persona sencilla es: " + item);
+		}
+		
+		List<PersonaContadorGenero> listaPersonaGenero = this.personaJpaService.consultarCantidadPorGenero();
+		for(PersonaContadorGenero item : listaPersonaGenero) {
+		LOG.info("La persona contada tiene: " + item);
+		}
+		
 		
 //		/////////////////////////tarea 17//////////////////
 //		LOG.info("Typed: "+this.estudianteJpaService.buscarPorNombreApellidoTyped("Naomi", "Marcillo"));
@@ -235,14 +248,14 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("Estudiante NativeNamed encontrada: "+this.estudianteJpaService.buscarPorEdadCarreraNamedNative(24,"Medicina"));
 		
 //		/////////////////////////tarea 19//////////////////
-		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscaDinamicamentePorNombreApellido("Ariel", "Zaldumbide", 23);
-		for(Estudiante item : listaEstudiante) {
-		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
-		}
-		List<Estudiante> listaEstudianteDos = this.estudianteJpaService.buscaDinamicamentePorNombreCarrera("Dario", "Medicina", 24);
-		for(Estudiante item : listaEstudianteDos) {
-		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
-		}
+//		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscaDinamicamentePorNombreApellido("Ariel", "Zaldumbide", 23);
+//		for(Estudiante item : listaEstudiante) {
+//		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
+//		}
+//		List<Estudiante> listaEstudianteDos = this.estudianteJpaService.buscaDinamicamentePorNombreCarrera("Dario", "Medicina", 24);
+//		for(Estudiante item : listaEstudianteDos) {
+//		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
+//		}
 		
 	}
 
