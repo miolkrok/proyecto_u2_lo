@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.uce.edu.demo.repository.modelo.Estudiante;
+import com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont;
+import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
@@ -221,15 +223,15 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
 //		}
 		//////////////PERSONA SENCILLA///////////////////////
-		List<PersonaSencilla> listaPersonaSencilla = this.personaJpaService.buscarPorApellidoSencillo("Salamanca");
-		for(PersonaSencilla item : listaPersonaSencilla) {
-		LOG.info("La persona sencilla es: " + item);
-		}
+//		List<PersonaSencilla> listaPersonaSencilla = this.personaJpaService.buscarPorApellidoSencillo("Salamanca");
+//		for(PersonaSencilla item : listaPersonaSencilla) {
+//		LOG.info("La persona sencilla es: " + item);
+//		}
 		
-		List<PersonaContadorGenero> listaPersonaGenero = this.personaJpaService.consultarCantidadPorGenero();
-		for(PersonaContadorGenero item : listaPersonaGenero) {
-		LOG.info("La persona contada tiene: " + item);
-		}
+//		List<PersonaContadorGenero> listaPersonaGenero = this.personaJpaService.consultarCantidadPorGenero();
+//		for(PersonaContadorGenero item : listaPersonaGenero) {
+//		LOG.info("La persona contada tiene: " + item);
+//		}
 		
 		
 //		/////////////////////////tarea 17//////////////////
@@ -250,12 +252,22 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		/////////////////////////tarea 19//////////////////
 //		List<Estudiante> listaEstudiante = this.estudianteJpaService.buscaDinamicamentePorNombreApellido("Ariel", "Zaldumbide", 23);
 //		for(Estudiante item : listaEstudiante) {
-//		LOG.info("Persona Criteria API Dinamica encontrada: " + item);
+//		LOG.info("Estudiante Criteria API Dinamica encontrada: " + item);
 //		}
 //		List<Estudiante> listaEstudianteDos = this.estudianteJpaService.buscaDinamicamentePorNombreCarrera("Dario", "Medicina", 24);
 //		for(Estudiante item : listaEstudianteDos) {
-//		LOG.info("Persona Criteria API Dinamica Predicados encontrada: " + item);
+//		LOG.info("Estudiante Criteria API Dinamica Predicados encontrada: " + item);
 //		}
+//		/////////////////////////tarea 20//////////////////
+		List<EstudianteSencillo> listaEstudianteSencillo = this.estudianteJpaService.consultarPorCarreraSencilla("Medicina");
+		for(EstudianteSencillo item : listaEstudianteSencillo) {
+		LOG.info("Estudiante Sencillo encontrado: " + item);
+		}
+		
+		List<EstudianteEdadCarreraCont> listaEstudianteSencilloCont = this.estudianteJpaService.consultarPorEdadCarreraCont();
+		for(EstudianteEdadCarreraCont item : listaEstudianteSencilloCont) {
+		LOG.info("Estudiante Sencillo Cantidad: " + item);
+		}
 		
 	}
 

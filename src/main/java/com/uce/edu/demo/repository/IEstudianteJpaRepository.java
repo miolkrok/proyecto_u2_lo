@@ -3,6 +3,8 @@ package com.uce.edu.demo.repository;
 import java.util.List;
 
 import com.uce.edu.demo.repository.modelo.Estudiante;
+import com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont;
+import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 
 public interface IEstudianteJpaRepository {
 	
@@ -22,4 +24,6 @@ public interface IEstudianteJpaRepository {
 	public Estudiante buscarPorEdadCarreraNamedNative(Integer edad,String carrera);
 	public List<Estudiante> buscaDinamicamentePorNombreApellido(String nombre,String apellido,Integer edad);
 	public List<Estudiante> buscaDinamicamentePorNombreCarrera(String nombre,String carrera,Integer edad);
+	public List<EstudianteSencillo> consultarPorCarreraSencilla(String carrera);
+	public List<EstudianteEdadCarreraCont> consultarPorEdadCarreraCont(); 
 }

@@ -15,6 +15,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.uce.edu.demo.repository.modelo.Estudiante;
+import com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont;
+import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 
 @Repository
@@ -180,7 +182,7 @@ public class EstudianteJpaRepositoryImpl implements IEstudianteJpaRepository {
 	}
 
 	@Override
-	public List<Estudiante> buscaDinamicamentePorNombreCarrera(String nombre,String carrera,Integer edad) {
+	public List<Estudiante> buscaDinamicamentePorNombreCarrera(String nombre, String carrera, Integer edad) {
 		// TODO Auto-generated method stub
 
 		CriteriaBuilder myBuilder = this.entityManager.getCriteriaBuilder();
@@ -202,6 +204,27 @@ public class EstudianteJpaRepositoryImpl implements IEstudianteJpaRepository {
 		CriteriaQuery<Estudiante> myQueryCompleto = myQuery.select(myTabla).where(miPredicadoFinal);
 		TypedQuery<Estudiante> myQueryFinal = this.entityManager.createQuery(myQueryCompleto);
 		return myQueryFinal.getResultList();
+	}
+
+	@Override
+	public List<EstudianteSencillo> consultarPorCarreraSencilla(String carrera) {
+		// TODO Auto-generated method stub
+		TypedQuery<EstudianteSencillo> myTypedQuery = this.entityManager.createQuery(
+				"SELECT NEW com.uce.edu.demo.repository.modelo.EstudianteSencillo(e.apellido, e.edad, e.carrera) FROM Estudiante e WHERE e.carrera = :datoCarrera",
+				EstudianteSencillo.class);
+		myTypedQuery.setParameter("datoCarrera", carrera);
+
+		return myTypedQuery.getResultList();
+	}
+
+	@Override
+	public List<EstudianteEdadCarreraCont> consultarPorEdadCarreraCont() {
+		// TODO Auto-generated method stub
+		TypedQuery<EstudianteEdadCarreraCont> myTypedQuery = this.entityManager.createQuery(
+				"SELECT NEW com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont(e.edad,COUNT(e.edad)) FROM Estudiante e WHERE e.edad > 20 GROUP BY e.edad",
+				EstudianteEdadCarreraCont.class);
+
+		return myTypedQuery.getResultList();
 	}
 
 }
