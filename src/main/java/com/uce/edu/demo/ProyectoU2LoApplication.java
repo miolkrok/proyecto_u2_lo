@@ -1,5 +1,6 @@
 package com.uce.edu.demo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,12 +9,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.uce.edu.demo.repository.modelo.Ciudadano;
+import com.uce.edu.demo.repository.modelo.Empleado;
 import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont;
 import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
+import com.uce.edu.demo.service.ICiudadanoService;
+import com.uce.edu.demo.service.IEmpleadoService;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
@@ -46,6 +51,12 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 
 	@Autowired
 	private IGestorMatriculacionService gestMatrServ;
+	
+	@Autowired
+	private ICiudadanoService ciudadanoService;
+	
+	@Autowired
+	private IEmpleadoService empleadoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -259,16 +270,26 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		LOG.info("Estudiante Criteria API Dinamica Predicados encontrada: " + item);
 //		}
 //		/////////////////////////tarea 20//////////////////
-		List<EstudianteSencillo> listaEstudianteSencillo = this.estudianteJpaService.consultarPorCarreraSencilla("Medicina");
-		for(EstudianteSencillo item : listaEstudianteSencillo) {
-		LOG.info("Estudiante Sencillo encontrado: " + item);
-		}
+//		List<EstudianteSencillo> listaEstudianteSencillo = this.estudianteJpaService.consultarPorCarreraSencilla("Medicina");
+//		for(EstudianteSencillo item : listaEstudianteSencillo) {
+//		LOG.info("Estudiante Sencillo encontrado: " + item);
+//		}
 		
-		List<EstudianteEdadCarreraCont> listaEstudianteSencilloCont = this.estudianteJpaService.consultarPorEdadCarreraCont();
-		for(EstudianteEdadCarreraCont item : listaEstudianteSencilloCont) {
-		LOG.info("Estudiante Sencillo Cantidad: " + item);
-		}
-		
+//		List<EstudianteEdadCarreraCont> listaEstudianteSencilloCont = this.estudianteJpaService.consultarPorEdadCarreraCont();
+//		for(EstudianteEdadCarreraCont item : listaEstudianteSencilloCont) {
+//		LOG.info("Estudiante Sencillo Cantidad: " + item);
+//		}
+		//////CIUDADANO///////////
+		Ciudadano ciu1 = new Ciudadano();
+		ciu1.setNombre("Luis");
+		ciu1.setApellido("Ortiz");
+		Empleado emp1 = new Empleado();
+		emp1.setCodigoIess("54152");
+		emp1.setSalario(new BigDecimal(200));
+		emp1.setCiudadano(ciu1);
+		ciu1.setEmpleado(emp1);
+//		this.ciudadanoService.insertar(ciu1);
+		this.empleadoService.insertar(emp1);
 	}
 
 }
