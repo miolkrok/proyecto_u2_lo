@@ -10,17 +10,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.repository.modelo.Ciudadano;
 import com.uce.edu.demo.repository.modelo.Estudiante;
 import com.uce.edu.demo.repository.modelo.EstudianteEdadCarreraCont;
 import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
-import com.uce.edu.demo.repository.modelo.Pasaporte;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
+import com.uce.edu.demo.repository.modelo.onetomany.Habitacion;
+import com.uce.edu.demo.repository.modelo.onetomany.Hotel;
+import com.uce.edu.demo.repository.modelo.onetoone.Ciudadano;
+import com.uce.edu.demo.repository.modelo.onetoone.Pasaporte;
 import com.uce.edu.demo.service.ICiudadanoService;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
+import com.uce.edu.demo.service.IHabitacionService;
+import com.uce.edu.demo.service.IHotelService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
 import com.uce.edu.demo.service.prueba.IGestorMatriculacionService;
@@ -54,6 +58,12 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ICiudadanoService ciudadanoService;
+	
+	@Autowired
+	private IHotelService hotelService;
+	
+	@Autowired
+	private IHabitacionService habitacionService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -288,7 +298,7 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		pasa1.setFechaCaducidad(LocalDateTime.now());
 		pasa1.setCiudadano(ciu1);
 		ciu1.setPasaporte(pasa1);
-		this.ciudadanoService.insertar(ciu1);
+//		this.ciudadanoService.insertar(ciu1);
 		
 		Ciudadano ciu2 = new Ciudadano();
 		ciu2.setId(1);
@@ -301,11 +311,11 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		pasa2.setFechaEmision(LocalDateTime.of(2022, 5, 30, 12, 00));
 		pasa2.setFechaCaducidad(LocalDateTime.now());
 		pasa2.setCiudadano(ciu2);
-		this.ciudadanoService.actualizar(ciu2);
+//		this.ciudadanoService.actualizar(ciu2);
 		
-		this.ciudadanoService.eliminar(2);
+//		this.ciudadanoService.eliminar(2);
 //		
-		this.ciudadanoService.buscarPorId(1);
+//		this.ciudadanoService.buscarPorId(1);
 		
 //		Empleado emp1 = new Empleado();
 //		emp1.setCodigoIess("54152");
@@ -314,6 +324,26 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		ciu1.setEmpleado(emp1);
 //		this.ciudadanoService.insertar(ciu1);
 //		this.empleadoService.insertar(emp1);
+		//////////////////////HOTEL//////////////
+		Hotel hotel2 = new Hotel();
+		hotel2.setNombre("Hilton Colon GYE");
+		hotel2.setDireccion("Malecon 2000");
+//		this.hotelService.insertar(hotel2);
+		Hotel hote1 = new Hotel();
+		hote1.setId(1);
+		Habitacion hab1 = new Habitacion();
+		hab1.setNumero("A234");
+		hab1.setPiso("10");
+		hab1.setTipo("Matrimonial");
+		hab1.setHotel(hote1);
+		
+		Habitacion hab2 = new Habitacion();
+		hab2.setNumero("A654152");
+		hab2.setPiso("4");
+		hab2.setTipo("Familiar");
+		hab2.setHotel(hote1);
+		this.habitacionService.insertar(hab1);
+		this.habitacionService.insertar(hab2);
 	}
 
 }
