@@ -2,6 +2,7 @@ package com.uce.edu.demo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -16,11 +17,14 @@ import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
+import com.uce.edu.demo.repository.modelo.onetomany.Cliente;
 import com.uce.edu.demo.repository.modelo.onetomany.Habitacion;
 import com.uce.edu.demo.repository.modelo.onetomany.Hotel;
+import com.uce.edu.demo.repository.modelo.onetomany.Pedido;
 import com.uce.edu.demo.repository.modelo.onetoone.Ciudadano;
 import com.uce.edu.demo.repository.modelo.onetoone.Pasaporte;
 import com.uce.edu.demo.service.ICiudadanoService;
+import com.uce.edu.demo.service.IClienteService;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IHabitacionService;
@@ -64,6 +68,9 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IHabitacionService habitacionService;
+	
+	@Autowired
+	private IClienteService clienteService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -342,8 +349,37 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		hab2.setPiso("4");
 		hab2.setTipo("Familiar");
 		hab2.setHotel(hote1);
-		this.habitacionService.insertar(hab1);
-		this.habitacionService.insertar(hab2);
+//		this.habitacionService.insertar(hab1);
+//		this.habitacionService.insertar(hab2);
+		Cliente clie1 = new Cliente();
+		clie1.setNombre("Nathaly");
+		clie1.setApellido("Singo");
+		clie1.setCedula("1796515200");
+		Pedido pedi1 = new Pedido();
+		List<Pedido> listPed = new ArrayList<>();
+		pedi1.setNumeroPedido("847589625");
+		pedi1.setFechaPedido(LocalDateTime.now());
+		pedi1.setPrecioTotal(new BigDecimal(8));
+		pedi1.setCliente(clie1);
+		Pedido pedi2 = new Pedido();
+		pedi2.setNumeroPedido("521502523");
+		pedi2.setFechaPedido(LocalDateTime.now());
+		pedi2.setPrecioTotal(new BigDecimal(32));
+		pedi2.setCliente(clie1);
+		listPed.add(pedi1);
+		listPed.add(pedi2);
+		clie1.setPedido(listPed);
+		this.clienteService.insertar(clie1);
+		
+		Cliente clie2 = new Cliente();
+		clie2.setId(1);
+		clie2.setNombre("Luis");
+		clie2.setApellido("Ortiz");
+		clie2.setCedula("1718496944");
+		this.clienteService.actualizar(clie2);
+		
+		this.clienteService.eliminar(2);
+		this.clienteService.buscaCliente(1);
 	}
 
 }
