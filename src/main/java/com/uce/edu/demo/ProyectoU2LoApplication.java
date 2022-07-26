@@ -3,7 +3,9 @@ package com.uce.edu.demo;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
+import com.uce.edu.demo.repository.modelo.manytomany.Autor;
+import com.uce.edu.demo.repository.modelo.manytomany.Libro;
 import com.uce.edu.demo.repository.modelo.onetomany.Cliente;
 import com.uce.edu.demo.repository.modelo.onetomany.Habitacion;
 import com.uce.edu.demo.repository.modelo.onetomany.Hotel;
@@ -29,6 +33,7 @@ import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IHabitacionService;
 import com.uce.edu.demo.service.IHotelService;
+import com.uce.edu.demo.service.ILibroService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
 import com.uce.edu.demo.service.prueba.IGestorMatriculacionService;
@@ -71,6 +76,9 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IClienteService clienteService;
+	
+	@Autowired
+	private ILibroService libroService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -351,35 +359,47 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		hab2.setHotel(hote1);
 //		this.habitacionService.insertar(hab1);
 //		this.habitacionService.insertar(hab2);
-		Cliente clie1 = new Cliente();
-		clie1.setNombre("Nathaly");
-		clie1.setApellido("Singo");
-		clie1.setCedula("1796515200");
-		Pedido pedi1 = new Pedido();
-		List<Pedido> listPed = new ArrayList<>();
-		pedi1.setNumeroPedido("847589625");
-		pedi1.setFechaPedido(LocalDateTime.now());
-		pedi1.setPrecioTotal(new BigDecimal(8));
-		pedi1.setCliente(clie1);
-		Pedido pedi2 = new Pedido();
-		pedi2.setNumeroPedido("521502523");
-		pedi2.setFechaPedido(LocalDateTime.now());
-		pedi2.setPrecioTotal(new BigDecimal(32));
-		pedi2.setCliente(clie1);
-		listPed.add(pedi1);
-		listPed.add(pedi2);
-		clie1.setPedido(listPed);
-		this.clienteService.insertar(clie1);
 		
-		Cliente clie2 = new Cliente();
-		clie2.setId(1);
-		clie2.setNombre("Luis");
-		clie2.setApellido("Ortiz");
-		clie2.setCedula("1718496944");
-		this.clienteService.actualizar(clie2);
-		
-		this.clienteService.eliminar(2);
-		this.clienteService.buscaCliente(1);
+		////////////TAREA 23//////////////////
+//		Cliente clie1 = new Cliente();
+//		clie1.setNombre("Nathaly");
+//		clie1.setApellido("Singo");
+//		clie1.setCedula("1796515200");
+//		Pedido pedi1 = new Pedido();
+//		List<Pedido> listPed = new ArrayList<>();
+//		pedi1.setNumeroPedido("847589625");
+//		pedi1.setFechaPedido(LocalDateTime.now());
+//		pedi1.setPrecioTotal(new BigDecimal(8));
+//		pedi1.setCliente(clie1);
+//		Pedido pedi2 = new Pedido();
+//		pedi2.setNumeroPedido("521502523");
+//		pedi2.setFechaPedido(LocalDateTime.now());
+//		pedi2.setPrecioTotal(new BigDecimal(32));
+//		pedi2.setCliente(clie1);
+//		listPed.add(pedi1);
+//		listPed.add(pedi2);
+//		clie1.setPedido(listPed);
+//		this.clienteService.insertar(clie1);
+//		
+//		Cliente clie2 = new Cliente();
+//		clie2.setId(1);
+//		clie2.setNombre("Luis");
+//		clie2.setApellido("Ortiz");
+//		clie2.setCedula("1718496944");
+//		this.clienteService.actualizar(clie2);
+//		
+//		this.clienteService.eliminar(2);
+//		this.clienteService.buscaCliente(1);
+		//////////////////taller 26 /////////
+		Autor aut1 = new Autor();
+		aut1.setNombre("Luis Borre");
+		Set<Autor> autores = new HashSet<>();
+		autores.add(aut1);
+		Libro lib1 = new Libro();
+		lib1.setTitulo("Mil y una noches");
+		lib1.setCantidadPaginas(250);
+		lib1.setAutores(autores);
+		this.libroService.insertar(lib1);
 	}
 
 }
