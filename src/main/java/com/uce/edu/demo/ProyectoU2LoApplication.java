@@ -21,18 +21,24 @@ import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
 import com.uce.edu.demo.repository.modelo.manytomany.Autor;
 import com.uce.edu.demo.repository.modelo.manytomany.Libro;
+import com.uce.edu.demo.repository.modelo.onetomany.Autor2;
 import com.uce.edu.demo.repository.modelo.onetomany.Cliente;
 import com.uce.edu.demo.repository.modelo.onetomany.Habitacion;
 import com.uce.edu.demo.repository.modelo.onetomany.Hotel;
+import com.uce.edu.demo.repository.modelo.onetomany.Libro2;
+import com.uce.edu.demo.repository.modelo.onetomany.Libro2Autor2;
 import com.uce.edu.demo.repository.modelo.onetomany.Pedido;
 import com.uce.edu.demo.repository.modelo.onetoone.Ciudadano;
 import com.uce.edu.demo.repository.modelo.onetoone.Pasaporte;
+import com.uce.edu.demo.service.IAutor2Service;
 import com.uce.edu.demo.service.ICiudadanoService;
 import com.uce.edu.demo.service.IClienteService;
 import com.uce.edu.demo.service.IEstudianteJpaService;
 import com.uce.edu.demo.service.IEstudianteService;
 import com.uce.edu.demo.service.IHabitacionService;
 import com.uce.edu.demo.service.IHotelService;
+import com.uce.edu.demo.service.ILibro2Autor2Service;
+import com.uce.edu.demo.service.ILibro2Service;
 import com.uce.edu.demo.service.ILibroService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
@@ -79,6 +85,15 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ILibroService libroService;
+	
+	@Autowired
+	private ILibro2Service libro2Service;
+	
+	@Autowired
+	private IAutor2Service autor2Service;
+	
+	@Autowired
+	private ILibro2Autor2Service libro2Autor2Service;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
@@ -399,7 +414,66 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		lib1.setTitulo("Mil y una noches");
 		lib1.setCantidadPaginas(250);
 		lib1.setAutores(autores);
-		this.libroService.insertar(lib1);
+//		this.libroService.insertar(lib1);
+		//////////////////tarea24//////////////////
+		
+		//////////// 1 AUTOR 2 LIBROS/////////////////
+		Autor2 aut01 = new Autor2();
+		aut01.setNombre("J.K. ROWLING");
+				
+		Libro2 libr01 = new Libro2();
+		libr01.setTitulo("Harry Potter");
+		libr01.setCantidadPaginas(350);
+		
+		Libro2 libr02 = new Libro2();
+		libr02.setTitulo("Harry Potter 2");
+		libr02.setCantidadPaginas(350);
+		
+		this.autor2Service.insertar(aut01);
+		this.libro2Service.insertar(libr01);
+		this.libro2Service.insertar(libr02);
+		
+		this.libro2Autor2Service.insertar(aut01.getId(),libr01.getId());
+		
+		this.libro2Autor2Service.insertar(aut01.getId(),libr02.getId());
+		
+		////////////2 AUTOR 1 LIBROS/////////////////
+		
+		Autor2 aut02 = new Autor2();
+		aut02.setNombre("J.K. ROWLING");
+		
+		Autor2 aut03 = new Autor2();
+		aut03.setNombre("Luis Ortiz");
+		
+		Libro2 libr03 = new Libro2();
+		libr03.setTitulo("Harry Potter 2");
+		libr03.setCantidadPaginas(350);
+		
+		this.autor2Service.insertar(aut02);
+		this.autor2Service.insertar(aut03);
+		this.libro2Service.insertar(libr03);
+		
+		this.libro2Autor2Service.insertar(aut02.getId(),libr03.getId());
+		
+		this.libro2Autor2Service.insertar(aut03.getId(),libr03.getId());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
