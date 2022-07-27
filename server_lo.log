@@ -203,3 +203,23 @@
 2022-07-18 23:28:52 INFO  ProyectoU2LoApplication:264 - Estudiante Sencillo encontrado: EstudianteSencillo [apellido=Ramos, edad=23, carrera=Medicina]
 2022-07-18 23:28:52 INFO  ProyectoU2LoApplication:269 - Estudiante Sencillo Cantidad: EstudianteEdadCarreraCont [edad=23, cantidad=6]
 2022-07-18 23:28:52 INFO  ProyectoU2LoApplication:269 - Estudiante Sencillo Cantidad: EstudianteEdadCarreraCont [edad=24, cantidad=1]
+2022-07-26 20:07:50 INFO  ProyectoU2LoApplication:467 - 001001
+2022-07-26 20:08:58 INFO  ProyectoU2LoApplication:467 - Numero: 001001
+2022-07-26 20:08:58 INFO  ProyectoU2LoApplication:468 - Fecha: 2022-07-07T00:00
+2022-07-26 20:10:25 INFO  ProyectoU2LoApplication:467 - Numero: 001001
+2022-07-26 20:10:25 INFO  ProyectoU2LoApplication:468 - Fecha: 2022-07-07T00:00
+2022-07-26 20:10:25 INFO  ProyectoU2LoApplication:470 - Cliente: Luis
+2022-07-26 20:10:46 INFO  ProyectoU2LoApplication:467 - Numero: 001001
+2022-07-26 20:10:46 INFO  ProyectoU2LoApplication:468 - Fecha: 2022-07-07T00:00
+2022-07-26 20:10:46 INFO  ProyectoU2LoApplication:470 - Cliente: 94613643
+2022-07-26 20:13:45 INFO  ProyectoU2LoApplication:468 - Numero: 001001
+2022-07-26 20:13:45 INFO  ProyectoU2LoApplication:469 - Fecha: 2022-07-07T00:00
+2022-07-26 20:13:45 INFO  ProyectoU2LoApplication:471 - Cliente: 94613643
+2022-07-26 20:14:27 INFO  ProyectoU2LoApplication:468 - Numero: 001001
+2022-07-26 20:14:27 INFO  ProyectoU2LoApplication:469 - Fecha: 2022-07-07T00:00
+2022-07-26 20:14:27 INFO  ProyectoU2LoApplication:471 - Cliente: 94613643
+2022-07-26 20:17:22 INFO  ProyectoU2LoApplication:468 - Numero: 001001
+2022-07-26 20:17:22 INFO  ProyectoU2LoApplication:469 - Fecha: 2022-07-07T00:00
+2022-07-26 20:17:22 INFO  ProyectoU2LoApplication:471 - Cliente: 94613643
+2022-07-26 20:17:22 INFO  ProyectoU2LoApplication:475 - Detalle: DetalleFactura [id=1, cantidad=10, subtotal=10.00]
+2022-07-26 20:17:22 INFO  ProyectoU2LoApplication:475 - Detalle: DetalleFactura [id=2, cantidad=2, subtotal=4.00]

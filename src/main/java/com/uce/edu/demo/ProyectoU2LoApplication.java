@@ -19,6 +19,8 @@ import com.uce.edu.demo.repository.modelo.EstudianteSencillo;
 import com.uce.edu.demo.repository.modelo.Persona;
 import com.uce.edu.demo.repository.modelo.PersonaContadorGenero;
 import com.uce.edu.demo.repository.modelo.PersonaSencilla;
+import com.uce.edu.demo.repository.modelo.cajero.Detalle;
+import com.uce.edu.demo.repository.modelo.cajero.Factura;
 import com.uce.edu.demo.repository.modelo.manytomany.Autor;
 import com.uce.edu.demo.repository.modelo.manytomany.Libro;
 import com.uce.edu.demo.repository.modelo.onetomany.Autor2;
@@ -42,6 +44,7 @@ import com.uce.edu.demo.service.ILibro2Service;
 import com.uce.edu.demo.service.ILibroService;
 import com.uce.edu.demo.service.IPersonaJdbcService;
 import com.uce.edu.demo.service.IPersonaJpaService;
+import com.uce.edu.demo.service.cajero.IFacturaService;
 import com.uce.edu.demo.service.prueba.IGestorMatriculacionService;
 import com.uce.edu.demo.service.prueba.IPropietarioService;
 import com.uce.edu.demo.service.prueba.IVehiculoService;
@@ -95,6 +98,8 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 	@Autowired
 	private ILibro2Autor2Service libro2Autor2Service;
 
+	@Autowired
+	private IFacturaService facturaService;
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU2LoApplication.class, args);
 	}
@@ -429,13 +434,13 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		libr02.setTitulo("Harry Potter 2");
 		libr02.setCantidadPaginas(350);
 		
-		this.autor2Service.insertar(aut01);
-		this.libro2Service.insertar(libr01);
-		this.libro2Service.insertar(libr02);
-		
-		this.libro2Autor2Service.insertar(aut01.getId(),libr01.getId());
-		
-		this.libro2Autor2Service.insertar(aut01.getId(),libr02.getId());
+//		this.autor2Service.insertar(aut01);
+//		this.libro2Service.insertar(libr01);
+//		this.libro2Service.insertar(libr02);
+//		
+//		this.libro2Autor2Service.insertar(aut01.getId(),libr01.getId());
+//		
+//		this.libro2Autor2Service.insertar(aut01.getId(),libr02.getId());
 		
 		////////////2 AUTOR 1 LIBROS/////////////////
 		
@@ -449,31 +454,26 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 		libr03.setTitulo("Harry Potter 2");
 		libr03.setCantidadPaginas(350);
 		
-		this.autor2Service.insertar(aut02);
-		this.autor2Service.insertar(aut03);
-		this.libro2Service.insertar(libr03);
+//		this.autor2Service.insertar(aut02);
+//		this.autor2Service.insertar(aut03);
+//		this.libro2Service.insertar(libr03);
+//		
+//		this.libro2Autor2Service.insertar(aut02.getId(),libr03.getId());
+//		
+//		this.libro2Autor2Service.insertar(aut03.getId(),libr03.getId());
+		///////////////taller 27///////////////////
 		
-		this.libro2Autor2Service.insertar(aut02.getId(),libr03.getId());
+		Factura fact = this.facturaService.consultar(1);
 		
-		this.libro2Autor2Service.insertar(aut03.getId(),libr03.getId());
+		LOG.info("Numero: " + fact.getNumero());
+		LOG.info("Fecha: " + fact.getFecha());
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		LOG.info("Cliente: " +fact.getCliente().getNumeroTarjeta());
+	
+		List<Detalle> detalles = fact.getDetalleFact();
+		for(Detalle deta:detalles) {
+			LOG.info("Detalle: " +deta);
+		}
 	}
 
 }
