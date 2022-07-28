@@ -32,6 +32,9 @@ import com.uce.edu.demo.repository.modelo.onetomany.Libro2Autor2;
 import com.uce.edu.demo.repository.modelo.onetomany.Pedido;
 import com.uce.edu.demo.repository.modelo.onetoone.Ciudadano;
 import com.uce.edu.demo.repository.modelo.onetoone.Pasaporte;
+import com.uce.edu.demo.repository.modelo.prueba.MatriculaVehiculos;
+import com.uce.edu.demo.repository.modelo.prueba.Propietario;
+import com.uce.edu.demo.repository.modelo.prueba.Vehiculo;
 import com.uce.edu.demo.service.IAutor2Service;
 import com.uce.edu.demo.service.ICiudadanoService;
 import com.uce.edu.demo.service.IClienteService;
@@ -463,17 +466,42 @@ public class ProyectoU2LoApplication implements CommandLineRunner {
 //		this.libro2Autor2Service.insertar(aut03.getId(),libr03.getId());
 		///////////////taller 27///////////////////
 		
-		Factura fact = this.facturaService.consultar(1);
+//		Factura fact = this.facturaService.consultar(1);
+//		
+//		LOG.info("Numero: " + fact.getNumero());
+//		LOG.info("Fecha: " + fact.getFecha());
+//		
+//		LOG.info("Cliente: " +fact.getCliente().getNumeroTarjeta());
+//	
+//		List<Detalle> detalles = fact.getDetalleFact();
+//		for(Detalle deta:detalles) {
+//			LOG.info("Detalle: " +deta);
+//		}
+		///////////////////////TAREA 25 ////////////////////////////
+		Vehiculo vehi = new Vehiculo();
+		vehi.setMarca("ford");
+		vehi.setPlaca("pdo3562");
+		vehi.setPrecio(new BigDecimal(20000));
+		vehi.setTipo("liviano");
+		this.vehiculoService.crear(vehi);
 		
-		LOG.info("Numero: " + fact.getNumero());
-		LOG.info("Fecha: " + fact.getFecha());
 		
-		LOG.info("Cliente: " +fact.getCliente().getNumeroTarjeta());
-	
-		List<Detalle> detalles = fact.getDetalleFact();
-		for(Detalle deta:detalles) {
-			LOG.info("Detalle: " +deta);
-		}
+		Vehiculo vehi2 = new Vehiculo();
+		vehi2.setId(1);
+		vehi2.setMarca("FORD");
+		vehi2.setPlaca("PDO-3562");
+		vehi2.setPrecio(new BigDecimal(20000));
+		vehi2.setTipo("liviano");
+		this.vehiculoService.actualizar(vehi2);
+		
+		
+		Propietario prop = new Propietario();
+		prop.setNombre("LUIS");
+		prop.setApellido("ORTIZ");
+		prop.setCedula("1718496944");
+		prop.setFechaNacimiento(LocalDateTime.of(1997, 5, 19, 0, 20));
+		this.propietarioService.crear(prop);
+		
+		this.gestMatrServ.matricular("1718496944", "PDO-3562");
 	}
-
 }
